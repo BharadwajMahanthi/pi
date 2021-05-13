@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+	<head><title> Monte carlo </title></head>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link href="/static/def.css" rel="stylesheet" type="text/css" />
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+      <script type=text/javascript>
+        $(function() {
+            $('#calculate').click(function(){
+              $.ajax({
+                url: '/addnumber',
+                data:{
+                  x: $('#x').val(),
+                  y: $('#y').val(),
+		  z: $('#z').val(),
+                },
+                dataType: 'JSON',
+                type: 'GET',
+                success: function(data){
+                    $("#result").html(data.result);		    
+                }
+                });
+             });
+        });
+  </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Calculate Pi value using Monte carlo Method</h3>
+      </div>
+      <hr/>
+      <div>
+      <p>
+   X value: <input type="number" id='x' size="5" name="x"> <br><br>
+   Y value: <input type="number" id='y' size="5" name="y"><br><br>
+   Enter the number of Shots: <input type="number" id='z' size="5" name="z"><br><br>
+    pi value:
+    <span id="result">?</span><br><br>
+    <p><button class="btn btn-success" id="calculate">calculate</button>
+      </form>
+      </div>
+    </div>
+  </body>
+</html>
